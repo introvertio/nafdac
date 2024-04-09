@@ -20,7 +20,7 @@ function readJsonFromFile(filePath) {
   });
 }
 
-// Function to transform array of arrays to dictionary using the last item as key
+// Function to transform array of arrays to dictionary with structured objects
 function transformData(data) {
   if (!Array.isArray(data)) {
     console.error("Expected an array, received type:", typeof data);
@@ -28,11 +28,23 @@ function transformData(data) {
   }
   const newData = {};
   data.forEach((item) => {
-    if (Array.isArray(item) && item.length > 0) {
-      const key = item[item.length - 1]; // Assuming the last element is the registration number
-      newData[key] = item;
+    if (Array.isArray(item) && item.length >= 11) {
+      const key = item[10]; // Assuming the last element is the registration number
+      newData[key] = {
+        id: item[0],
+        "product type": item[1],
+        "product name": item[2],
+        "product category": item[3],
+        "active ingredient(s)": item[4],
+        manufacturer: item[5],
+        "manufacturer country": item[6],
+        "manufacturer address": item[7],
+        "date approved": item[8],
+        "expiry date": item[9],
+        "registration number": item[10],
+      };
     } else {
-      console.error("Item is not an array or is empty:", item);
+      console.error("Item is not an array or is incomplete:", item);
     }
   });
   return newData;
@@ -56,7 +68,7 @@ const originalFilePath = path.join(
 );
 const newFilePath = path.join(
   __dirname,
-  "formatted-nafdac-registered-products.json"
+  "formatted-nafdac-registered-products-test.json"
 );
 
 // Main function to handle the process

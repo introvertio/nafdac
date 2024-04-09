@@ -27,7 +27,7 @@ function searchByRegistrationNumber(data, registrationNumber) {
 // Path to the JSON file
 const jsonFilePath = path.join(
   __dirname,
-  "formatted-nafdac-registered-products.json"
+  "formatted-nafdac-registered-products-test.json"
 );
 
 // Main function to handle the search process
