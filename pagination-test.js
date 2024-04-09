@@ -1,4 +1,5 @@
 const axios = require("axios");
+const fs = require("fs");
 
 async function fetchPage(pageNumber) {
   const url = `http://greenbook.nafdac.gov.ng/?draw=${pageNumber}&columns%5B0%5D%5Bdata%5D=product_name&columns%5B0%5D%5Bname%5D=product_name&...&start=${
@@ -20,7 +21,7 @@ async function fetchPage(pageNumber) {
   try {
     const response = await axios.get(url, config);
     console.log(`Data fetched successfully for page ${pageNumber}`);
-    return response.data; // Assuming data is directly in response.data
+    return response.data.data; // Assuming data is directly in response.data
   } catch (error) {
     console.error(`Failed to fetch data for page ${pageNumber}:`, error);
     return null; // Handle error by returning null or appropriate error handling
@@ -36,8 +37,18 @@ async function fetchAllPages(totalPages) {
     }
   }
   console.log("Finished fetching all pages.");
-  // Optionally save the data to a file or database
-  return allData;
+  saveDataToJsonFile(allData);
 }
 
-console.log(fetchAllPages(71)); // Fetch data from page 1 to 71
+function saveDataToJsonFile(data) {
+  const filePath = "./drugs-data.json"; // Path where you want to save the JSON file
+  fs.writeFile(filePath, JSON.stringify(data, null, 4), (err) => {
+    if (err) {
+      console.error("Error writing file:", err);
+    } else {
+      console.log("Data successfully written to", filePath);
+    }
+  });
+}
+
+fetchAllPages(71);
