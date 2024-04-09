@@ -68,7 +68,7 @@ const originalFilePath = path.join(
 );
 const newFilePath = path.join(
   __dirname,
-  "formatted-nafdac-registered-products-test.json"
+  "formatted-nafdac-registered-products.json"
 );
 
 // Main function to handle the process
