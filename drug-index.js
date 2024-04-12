@@ -19,7 +19,7 @@ async function fetchData() {
 
   try {
     const response = await axios.get(url, config);
-    saveDataToJsonFile(response.data);
+    saveDataToJsonFile(response.data.data);
   } catch (error) {
     if (error.response) {
       // The request was made and the server responded with a status code
