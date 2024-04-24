@@ -1,6 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
 
+//scraping products
 const url =
   "https://nafdac.gov.ng/wp-admin/admin-ajax.php?action=get_wdtable&table_id=1";
 const options = {

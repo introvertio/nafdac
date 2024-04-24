@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-// Function to read JSON data from a file and count top-level elements
+// Function to read Products JSON and return count of all the Objects in the JSON
 function countJsonElementsFromFile(filePath) {
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
@@ -17,8 +17,6 @@ function countJsonElementsFromFile(filePath) {
   });
 }
 
-// Specify the path to your JSON file
 const jsonFilePath = "formatted-nafdac-registered-products-test.json"; // Change this to the actual path of your JSON file
 
-// Call the function
 countJsonElementsFromFile(jsonFilePath);

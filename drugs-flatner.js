@@ -30,9 +30,6 @@ fs.readFile("drugs-data.json", "utf8", (err, data) => {
         console.log("The file has been saved!");
       }
     );
-
-    // Output the flattened data to console, optional
-    console.log(flattenedData);
   } catch (e) {
     console.error("Error parsing JSON!", e);
   }

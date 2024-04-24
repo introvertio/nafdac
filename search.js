@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-// Function to read JSON data from file
 function readJsonFromFile(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, { encoding: "utf8" }, (err, data) => {
@@ -36,8 +35,7 @@ async function main() {
     // Read data from JSON file
     const data = await readJsonFromFile(jsonFilePath);
 
-    // Get the search term from command line argument
-    const searchTerm = "03-0740"; // Gets the second command line argument
+    const searchTerm = "03-0740"; // Set what item you want to get with reg number
 
     if (!searchTerm) {
       console.log("Please provide a registration number to search for.");

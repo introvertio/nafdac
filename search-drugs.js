@@ -1,7 +1,6 @@
 const fs = require("fs");
 const readline = require("readline");
 
-// Function to search products by NAFDAC number
 function searchProductByNAFDAC(data, nafdacNumber) {
   return data.find((product) => product.NAFDAC === nafdacNumber);
 }
