@@ -64,11 +64,11 @@ function writeJsonToFile(filePath, data) {
 // Path to the original and new JSON files
 const originalFilePath = path.join(
   __dirname,
-  "nafdac-registered-products.json"
+  "nafdac-registered-products.json" //edit accordingly
 );
 const newFilePath = path.join(
   __dirname,
-  "formatted-nafdac-registered-products.json"
+  "formatted-nafdac-registered-products.json" //edit accordingly
 );
 
 // Main function to handle the process
